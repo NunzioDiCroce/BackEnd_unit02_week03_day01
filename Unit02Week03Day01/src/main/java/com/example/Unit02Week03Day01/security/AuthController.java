@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Unit02Week03Day01.entities.Utente;
+import com.example.Unit02Week03Day01.exceptions.UnauthorizedException;
 import com.example.Unit02Week03Day01.payloads.UserRequestPayload;
 import com.example.Unit02Week03Day01.services.UtenteService;
 
@@ -28,6 +29,22 @@ public class AuthController {
 		Utente created = utenteService.create(body);
 
 		return created;
+	}
+
+	@PostMapping("/login")
+	public LoginSuccessfullPayload login(@RequestBody UserLoginPayload body) {
+
+		Utente user = utenteService.findByEmail(body.getEmail());
+
+		if (body.getPassword().equals(user.getPassword())) {
+
+			String token = jwtTools.createToken(user);
+			return new LoginSuccessfullPayload(token);
+
+		} else {
+
+			throw new UnauthorizedException("Credenziali non valide!");
+		}
 	}
 
 }
