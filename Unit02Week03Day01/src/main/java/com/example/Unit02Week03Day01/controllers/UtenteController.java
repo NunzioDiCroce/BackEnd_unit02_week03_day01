@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Unit02Week03Day01.entities.Utente;
-import com.example.Unit02Week03Day01.entities.UtentePayload;
+import com.example.Unit02Week03Day01.payloads.UtentePayload;
 import com.example.Unit02Week03Day01.services.UtenteService;
 
 @RestController

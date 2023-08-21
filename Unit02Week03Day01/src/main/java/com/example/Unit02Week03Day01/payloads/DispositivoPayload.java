@@ -1,4 +1,4 @@
-package com.example.Unit02Week03Day01.entities;
+package com.example.Unit02Week03Day01.payloads;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
