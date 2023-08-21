@@ -49,7 +49,6 @@ public class UtenteService {
 	public Utente findByIdAndUpdate(UUID id, UtentePayload body) throws ItemNotFoundException {
 		Utente found = this.findById(id);
 
-		found.setUserName(body.getUserName());
 		found.setNome(body.getNome());
 		found.setCognome(body.getCognome());
 		found.setMail(body.getMail());
