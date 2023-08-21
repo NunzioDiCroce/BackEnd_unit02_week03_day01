@@ -1,6 +1,7 @@
 package com.example.Unit02Week03Day01.entities;
 
 import java.util.Set;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Utente {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private UUID id;
 
 	protected String userName;
 	protected String nome;
