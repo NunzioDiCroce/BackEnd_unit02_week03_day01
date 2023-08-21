@@ -3,7 +3,9 @@ package com.example.Unit02Week03Day01.entities;
 import java.util.Set;
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -34,7 +36,14 @@ public class Utente {
 	protected String userName;
 	protected String nome;
 	protected String cognome;
+
+	@Column(nullable = false, unique = true)
 	protected String mail;
+
+	private String password;
+
+	@Enumerated(EnumType.STRING)
+	private Ruolo ruolo;
 
 	@OneToMany
 	protected Set<Dispositivo> dispositivi;
