@@ -30,13 +30,15 @@ public class Dispositivo {
 
 	protected String tipo;
 	protected String stato;
+	protected String codice;
 
 	@ManyToOne
 	protected Utente utente;
 
-	public Dispositivo(String tipo, String stato) {
+	public Dispositivo(String tipo, String stato, String codice) {
 		this.tipo = tipo;
 		this.stato = stato;
+		this.codice = codice;
 	}
 
 }
