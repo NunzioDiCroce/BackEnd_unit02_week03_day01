@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.Unit02Week03Day01.entities.Utente;
 import com.example.Unit02Week03Day01.exceptions.ItemNotFoundException;
+import com.example.Unit02Week03Day01.payloads.UserRequestPayload;
 import com.example.Unit02Week03Day01.payloads.UtentePayload;
 import com.example.Unit02Week03Day01.repositories.UtenteRepository;
 
@@ -22,6 +23,15 @@ public class UtenteService {
 	@Autowired
 	public UtenteService(UtenteRepository utenteRepository) {
 		this.utenteRepository = utenteRepository;
+	}
+
+	public Utente create(UserRequestPayload body) {
+		// check if email already in use
+		utenteRepository.findByEmail(body.getMail()).ifPresent(user -> {
+			throw new BadRequestException("L'email è già stata utilizzata");
+		});
+		User newUser = new User(body.getName(), body.getSurname(), body.getEmail(), body.getPassword());
+		return usersRepo.save(newUser);
 	}
 
 	// save utente
