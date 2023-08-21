@@ -1,10 +1,18 @@
 package com.example.Unit02Week03Day01.entities;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import com.example.Unit02Week03Day01.enums.Ruolo;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -33,7 +41,6 @@ public class Utente {
 	@GeneratedValue
 	private UUID id;
 
-	protected String userName;
 	protected String nome;
 	protected String cognome;
 
@@ -48,11 +55,42 @@ public class Utente {
 	@OneToMany
 	protected Set<Dispositivo> dispositivi;
 
-	public Utente(String userName, String nome, String cognome, String mail) {
-		this.userName = userName;
+	public Utente(String nome, String cognome, String mail, String password) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.mail = mail;
+		this.password = password;
+		this.ruolo = Ruolo.USER;
+	}
+
+//	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return List.of(new SimpleGrantedAuthority(ruolo.name()));
+	}
+
+//	@Override
+	public String getUsername() {
+		return this.mail;
+	}
+
+//	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+//	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+//	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+//	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 
 }
