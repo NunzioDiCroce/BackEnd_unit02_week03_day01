@@ -2,6 +2,7 @@ package com.example.Unit02Week03Day01.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +26,15 @@ public class AuthController {
 	@Autowired
 	JWTTools jwtTools;
 
+	@Autowired
+	PasswordEncoder bcrypt;
+
 	@PostMapping("/register")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Utente saveUser(@RequestBody UserRequestPayload body) {
+
+		body.setPassword(bcrypt.encode(body.getPassword()));
+
 		Utente created = utenteService.create(body);
 
 		return created;
