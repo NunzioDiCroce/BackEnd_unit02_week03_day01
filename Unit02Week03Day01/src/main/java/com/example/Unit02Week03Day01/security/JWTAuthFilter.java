@@ -1,5 +1,6 @@
 package com.example.Unit02Week03Day01.security;
 
+import java.io.IOException;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.example.Unit02Week03Day01.entities.Utente;
 import com.example.Unit02Week03Day01.exceptions.UnauthorizedException;
 import com.example.Unit02Week03Day01.services.UtenteService;
 
@@ -37,7 +39,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 		jwttools.verifyToken(token);
 
 		String id = jwttools.extractSubject(token);
-		User currentUser = usersService.findById(UUID.fromString(id));
+		Utente currentUser = utenteService.findById(UUID.fromString(id));
 
 		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(currentUser, null,
 				currentUser.getAuthorities());

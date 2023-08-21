@@ -1,6 +1,7 @@
 package com.example.Unit02Week03Day01.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class UtenteService {
 		return utenteRepository.findAll();
 	}
 
-	public Utente findById(long id) throws ItemNotFoundException {
+	public Utente findById(UUID id) throws ItemNotFoundException {
 		return utenteRepository.findById(id).orElseThrow(() -> new ItemNotFoundException(id));
 
 	}
