@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.Unit02Week03Day01.entities.Dispositivo;
 import com.example.Unit02Week03Day01.entities.DispositivoPayload;
+import com.example.Unit02Week03Day01.exceptions.ItemNotFoundException;
 import com.example.Unit02Week03Day01.repositories.DispositivoRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -50,8 +51,9 @@ public class DispositivoService {
 	public Dispositivo findByIdAndUpdate(long id, DispositivoPayload body) throws ItemNotFoundException {
 		Dispositivo found = this.findById(id);
 
-		found.setTipoDispositivo(body.getTipoDispositivo());
-		found.setStatoDispositivo(body.getStatoDispositivo());
+		found.setTipo(body.getTipo());
+		found.setStato(body.getStato());
+		found.setCodice(body.getCodice());
 
 		return dispositivoRepository.save(found);
 	}
