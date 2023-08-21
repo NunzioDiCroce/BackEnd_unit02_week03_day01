@@ -26,12 +26,12 @@ public class UtenteService {
 	}
 
 	public Utente create(UserRequestPayload body) {
-		// check if email already in use
+
 		utenteRepository.findByEmail(body.getMail()).ifPresent(user -> {
 			throw new BadRequestException("L'email è già stata utilizzata");
 		});
-		User newUser = new User(body.getName(), body.getSurname(), body.getEmail(), body.getPassword());
-		return usersRepo.save(newUser);
+		Utente newUser = new Utente(body.getNome(), body.getCognome(), body.getMail(), body.getPassword());
+		return utenteRepository.save(newUser);
 	}
 
 	// save utente

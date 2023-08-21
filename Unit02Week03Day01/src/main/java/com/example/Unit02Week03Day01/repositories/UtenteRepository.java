@@ -11,6 +11,6 @@ import com.example.Unit02Week03Day01.entities.Utente;
 @Repository
 public interface UtenteRepository extends JpaRepository<Utente, UUID> {
 
-	Optional<Utente> findByEmail(String email);
+	Optional<Utente> findByEmail(String mail);
 
 }
