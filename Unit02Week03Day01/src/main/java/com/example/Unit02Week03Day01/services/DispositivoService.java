@@ -49,7 +49,7 @@ public class DispositivoService {
 
 	}
 
-	public Dispositivo findByIdAndUpdate(long id, DispositivoPayload body) throws ItemNotFoundException {
+	public Dispositivo findByIdAndUpdate(UUID id, DispositivoPayload body) throws ItemNotFoundException {
 		Dispositivo found = this.findById(id);
 
 		found.setTipo(body.getTipo());
@@ -59,7 +59,7 @@ public class DispositivoService {
 		return dispositivoRepository.save(found);
 	}
 
-	public void findByIdAndDelete(long id) throws ItemNotFoundException {
+	public void findByIdAndDelete(UUID id) throws ItemNotFoundException {
 		Dispositivo found = this.findById(id);
 		dispositivoRepository.delete(found);
 	}
