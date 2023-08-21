@@ -1,6 +1,7 @@
 package com.example.Unit02Week03Day01.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,19 +39,19 @@ public class UtenteController {
 	}
 
 	@GetMapping("/{userId}")
-	public Utente getUserById(@PathVariable long userId) {
+	public Utente getUserById(@PathVariable UUID userId) {
 		return utenteService.findById(userId);
 
 	}
 
 	@PutMapping("/{userId}")
-	public Utente updateUser(@PathVariable long userId, @RequestBody UtentePayload body) {
+	public Utente updateUser(@PathVariable UUID userId, @RequestBody UtentePayload body) {
 		return utenteService.findByIdAndUpdate(userId, body);
 	}
 
 	@DeleteMapping("/{userId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteUser(@PathVariable long userId) {
+	public void deleteUser(@PathVariable UUID userId) {
 		utenteService.findByIdAndDelete(userId);
 	}
 
