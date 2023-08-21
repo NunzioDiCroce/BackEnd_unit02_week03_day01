@@ -1,6 +1,7 @@
 package com.example.Unit02Week03Day01.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,19 +43,19 @@ public class DispositivoController {
 	}
 
 	@GetMapping("/{deviceId}")
-	public Dispositivo getDeviceById(@PathVariable long deviceId) {
+	public Dispositivo getDeviceById(@PathVariable UUID deviceId) {
 		return dispositivoService.findById(deviceId);
 
 	}
 
 	@PutMapping("/{deviceId}")
-	public Dispositivo updateDevice(@PathVariable long deviceId, @RequestBody DispositivoPayload body) {
+	public Dispositivo updateDevice(@PathVariable UUID deviceId, @RequestBody DispositivoPayload body) {
 		return dispositivoService.findByIdAndUpdate(deviceId, body);
 	}
 
 	@DeleteMapping("/{deviceId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteDevice(@PathVariable long deviceId) {
+	public void deleteDevice(@PathVariable UUID deviceId) {
 		dispositivoService.findByIdAndDelete(deviceId);
 	}
 
