@@ -14,8 +14,7 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JWTTools {
 
-	// @Value("${spring.jwt.secret}")
-	@Value("PLL9KDLP467QJYCH8X8MYZLP1HK1J3Z6")
+	@Value("${spring.jwt.secret}")
 	private String secret;
 
 	public String createToken(Utente u) {
