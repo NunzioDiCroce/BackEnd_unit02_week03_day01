@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.Unit02Week03Day01.entities.Utente;
 import com.example.Unit02Week03Day01.entities.UtentePayload;
+import com.example.Unit02Week03Day01.exceptions.ItemNotFoundException;
 import com.example.Unit02Week03Day01.repositories.UtenteRepository;
 
 import lombok.extern.slf4j.Slf4j;
