@@ -1,5 +1,7 @@
 package com.example.Unit02Week03Day01.entities;
 
+import java.util.UUID;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -26,7 +28,7 @@ public class Dispositivo {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private UUID id;
 
 	protected String tipo;
 	protected String stato;
