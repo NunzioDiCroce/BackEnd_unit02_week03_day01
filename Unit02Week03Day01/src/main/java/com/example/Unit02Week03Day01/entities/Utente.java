@@ -2,8 +2,6 @@ package com.example.Unit02Week03Day01.entities;
 
 import java.util.Set;
 
-import com.example.GestioneDispositivi.entities.Dispositivo;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
