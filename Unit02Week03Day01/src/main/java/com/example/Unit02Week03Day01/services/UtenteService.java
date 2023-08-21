@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.Unit02Week03Day01.entities.Utente;
@@ -55,6 +56,12 @@ public class UtenteService {
 	public Utente findById(UUID id) throws ItemNotFoundException {
 		return utenteRepository.findById(id).orElseThrow(() -> new ItemNotFoundException(id));
 
+	}
+
+	// findByEmail usato in AuthController
+	public Utente findByEmail(String mail) {
+		return utenteRepository.findByEmail(mail)
+				.orElseThrow(() -> new NotFoundException("Utente con email " + email + " non trovato"));
 	}
 
 	public Utente findByIdAndUpdate(UUID id, UtentePayload body) throws ItemNotFoundException {

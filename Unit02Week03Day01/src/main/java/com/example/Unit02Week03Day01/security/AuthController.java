@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Unit02Week03Day01.entities.Utente;
 import com.example.Unit02Week03Day01.exceptions.UnauthorizedException;
+import com.example.Unit02Week03Day01.payloads.LoginSuccessfullPayload;
+import com.example.Unit02Week03Day01.payloads.UserLoginPayload;
 import com.example.Unit02Week03Day01.payloads.UserRequestPayload;
 import com.example.Unit02Week03Day01.services.UtenteService;
 
@@ -34,7 +36,7 @@ public class AuthController {
 	@PostMapping("/login")
 	public LoginSuccessfullPayload login(@RequestBody UserLoginPayload body) {
 
-		Utente user = utenteService.findByEmail(body.getEmail());
+		Utente user = utenteService.findByEmail(body.getMail());
 
 		if (body.getPassword().equals(user.getPassword())) {
 
