@@ -46,7 +46,7 @@ public class UtenteService {
 
 	}
 
-	public Utente findByIdAndUpdate(long id, UtentePayload body) throws ItemNotFoundException {
+	public Utente findByIdAndUpdate(UUID id, UtentePayload body) throws ItemNotFoundException {
 		Utente found = this.findById(id);
 
 		found.setUserName(body.getUserName());
@@ -57,7 +57,7 @@ public class UtenteService {
 		return utenteRepository.save(found);
 	}
 
-	public void findByIdAndDelete(long id) throws ItemNotFoundException {
+	public void findByIdAndDelete(UUID id) throws ItemNotFoundException {
 		Utente found = this.findById(id);
 		utenteRepository.delete(found);
 	}
