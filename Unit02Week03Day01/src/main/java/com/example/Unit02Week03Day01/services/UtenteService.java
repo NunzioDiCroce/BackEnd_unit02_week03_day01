@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Unit02Week03Day01.entities.Utente;
+import com.example.Unit02Week03Day01.exceptions.BadRequestException;
 import com.example.Unit02Week03Day01.exceptions.ItemNotFoundException;
 import com.example.Unit02Week03Day01.payloads.UserRequestPayload;
 import com.example.Unit02Week03Day01.payloads.UtentePayload;
@@ -25,8 +26,8 @@ public class UtenteService {
 		this.utenteRepository = utenteRepository;
 	}
 
+	// create utente usata in AuthController
 	public Utente create(UserRequestPayload body) {
-
 		utenteRepository.findByEmail(body.getMail()).ifPresent(user -> {
 			throw new BadRequestException("L'email è già stata utilizzata");
 		});
