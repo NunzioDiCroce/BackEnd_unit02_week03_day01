@@ -16,6 +16,9 @@ public class SecurityConfig {
 	@Autowired
 	JWTAuthFilter jwtFilter;
 
+	@Autowired
+	CorsFilter corsFilter;
+
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.cors(c -> c.disable());
