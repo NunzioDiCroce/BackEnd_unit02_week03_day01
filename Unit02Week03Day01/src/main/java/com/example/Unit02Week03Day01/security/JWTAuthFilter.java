@@ -24,6 +24,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
 	@Autowired
 	JWTTools jwttools;
+
 	@Autowired
 	UtenteService utenteService;
 
