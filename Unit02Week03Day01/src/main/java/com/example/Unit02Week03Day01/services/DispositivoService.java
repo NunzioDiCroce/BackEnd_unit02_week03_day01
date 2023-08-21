@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Unit02Week03Day01.entities.Dispositivo;
+import com.example.Unit02Week03Day01.entities.DispositivoPayload;
 import com.example.Unit02Week03Day01.repositories.DispositivoRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +34,7 @@ public class DispositivoService {
 
 	// save by DispositivoPayload
 	public Dispositivo save(DispositivoPayload body) {
-		Dispositivo nuovoDispositivo = new Dispositivo(body.getTipoDispositivo(), body.getStatoDispositivo());
+		Dispositivo nuovoDispositivo = new Dispositivo(body.getTipo(), body.getStato(), body.getCodice());
 		return dispositivoRepository.save(nuovoDispositivo);
 	}
 
