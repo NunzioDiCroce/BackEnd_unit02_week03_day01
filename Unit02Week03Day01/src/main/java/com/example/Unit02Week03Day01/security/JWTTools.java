@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.example.Unit02Week03Day01.entities.Utente;
+import com.example.Unit02Week03Day01.exceptions.UnauthorizedException;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
