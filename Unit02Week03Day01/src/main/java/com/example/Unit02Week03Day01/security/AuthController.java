@@ -45,7 +45,7 @@ public class AuthController {
 
 		Utente user = utenteService.findByEmail(body.getMail());
 
-		if (body.getPassword().equals(user.getPassword())) {
+		if (bcrypt.matches(body.getPassword(), user.getPassword())) {
 
 			String token = jwtTools.createToken(user);
 			return new LoginSuccessfullPayload(token);
