@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.Unit02Week03Day01.entities.Utente;
 import com.example.Unit02Week03Day01.exceptions.BadRequestException;
 import com.example.Unit02Week03Day01.exceptions.ItemNotFoundException;
+import com.example.Unit02Week03Day01.exceptions.NotFoundException;
 import com.example.Unit02Week03Day01.payloads.UserRequestPayload;
 import com.example.Unit02Week03Day01.payloads.UtentePayload;
 import com.example.Unit02Week03Day01.repositories.UtenteRepository;
@@ -61,7 +61,7 @@ public class UtenteService {
 	// findByEmail usato in AuthController
 	public Utente findByEmail(String mail) {
 		return utenteRepository.findByEmail(mail)
-				.orElseThrow(() -> new NotFoundException("Utente con email " + email + " non trovato"));
+				.orElseThrow(() -> new NotFoundException("Utente con email" + mail + "non trovato"));
 	}
 
 	public Utente findByIdAndUpdate(UUID id, UtentePayload body) throws ItemNotFoundException {
