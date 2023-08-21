@@ -29,7 +29,7 @@ public class UtenteService {
 
 	// create utente usata in AuthController
 	public Utente create(UserRequestPayload body) {
-		utenteRepository.findByEmail(body.getMail()).ifPresent(user -> {
+		utenteRepository.findByMail(body.getMail()).ifPresent(user -> {
 			throw new BadRequestException("L'email è già stata utilizzata");
 		});
 		Utente newUser = new Utente(body.getNome(), body.getCognome(), body.getMail(), body.getPassword());
@@ -60,7 +60,7 @@ public class UtenteService {
 
 	// findByEmail usato in AuthController
 	public Utente findByEmail(String mail) {
-		return utenteRepository.findByEmail(mail)
+		return utenteRepository.findByMail(mail)
 				.orElseThrow(() -> new NotFoundException("Utente con email" + mail + "non trovato"));
 	}
 
