@@ -43,4 +43,10 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder(11);
 	}
 
+	// * * * * aggiunta configurazione encoder BCrypt
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	// * * * *
+
 }
