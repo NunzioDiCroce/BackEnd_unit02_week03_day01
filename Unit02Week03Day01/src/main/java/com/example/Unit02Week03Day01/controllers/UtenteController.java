@@ -23,8 +23,12 @@ import com.example.Unit02Week03Day01.services.UtenteService;
 @RequestMapping("/utenti")
 public class UtenteController {
 
+	private final UtenteService utenteService;
+
 	@Autowired
-	private UtenteService utenteService;
+	public UtenteController(UtenteService utenteService) {
+		this.utenteService = utenteService;
+	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
