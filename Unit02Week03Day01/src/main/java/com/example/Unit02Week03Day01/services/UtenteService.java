@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.Unit02Week03Day01.entities.Utente;
@@ -79,16 +78,5 @@ public class UtenteService {
 		Utente found = this.findById(id);
 		utenteRepository.delete(found);
 	}
-
-	// * * * * metodo per aggiornamento password
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
-
-	public void updatePassword(UUID id, String newPassword) throws ItemNotFoundException {
-		Utente utente = findById(id);
-		utente.setPassword(passwordEncoder.encode(newPassword));
-		save(utente);
-	}
-	// * * * *
 
 }
