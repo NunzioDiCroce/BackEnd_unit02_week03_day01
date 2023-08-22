@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.Unit02Week03Day01.enums.Ruolo;
 
@@ -20,6 +21,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,14 +30,16 @@ import lombok.extern.slf4j.Slf4j;
 
 @Entity
 @Table(name = "utenti")
+@Data
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+//@JsonIgnoreProperties({ "password", "accountNonExpired", "authorities", "credentialsNonExpired", "accountNonLocked" })
 @ToString
 @Slf4j
 @Builder
-public class Utente {
+public class Utente implements UserDetails {
 
 	@Id
 	@GeneratedValue
@@ -63,32 +67,32 @@ public class Utente {
 		this.ruolo = Ruolo.USER;
 	}
 
-//	@Override
+	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return List.of(new SimpleGrantedAuthority(ruolo.name()));
 	}
 
-//	@Override
+	@Override
 	public String getUsername() {
 		return this.mail;
 	}
 
-//	@Override
+	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
-//	@Override
+	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 
-//	@Override
+	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
-//	@Override
+	@Override
 	public boolean isEnabled() {
 		return true;
 	}
