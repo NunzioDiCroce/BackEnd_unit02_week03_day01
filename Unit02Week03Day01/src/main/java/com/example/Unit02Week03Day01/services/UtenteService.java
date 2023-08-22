@@ -80,7 +80,7 @@ public class UtenteService {
 		utenteRepository.delete(found);
 	}
 
-	// * * * * metodo per l'aggiornamento delle password nel servizio UtenteService
+	// * * * * metodo per aggiornamento password
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
