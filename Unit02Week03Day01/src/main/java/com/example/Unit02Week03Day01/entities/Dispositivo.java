@@ -2,6 +2,9 @@ package com.example.Unit02Week03Day01.entities;
 
 import java.util.UUID;
 
+import com.example.Unit02Week03Day01.converters.CodiceConverter;
+
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -32,6 +35,8 @@ public class Dispositivo {
 
 	protected String tipo;
 	protected String stato;
+
+	@Convert(converter = CodiceConverter.class)
 	protected String codice;
 
 	@ManyToOne
